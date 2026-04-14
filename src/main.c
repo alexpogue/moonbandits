@@ -5,18 +5,14 @@
 #include "app.h"
 
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char **argv) {
-    app_t *app = malloc(sizeof(app_t));
-    if (!app) {
-        puts("Allocation failed. Abort.");
-        return SDL_APP_FAILURE;
-    }
-    SDL_AppResult res = app_init(app, argc, argv);
+    app_t *app = NULL;
+
+    SDL_AppResult res = app_init(&app, argc, argv);
     if (res != SDL_APP_CONTINUE) {
-        free(app);
         return res;
     }
     *appstate = app;
-    return app_init(app, argc, argv);
+    return res;
 }
 
 SDL_AppResult SDL_AppIterate(void *appstate) {
@@ -32,5 +28,4 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event) {
 void SDL_AppQuit(void *appstate, SDL_AppResult result) {
     app_t *app = appstate;
     app_quit(app, result);
-    free(app);
 }
