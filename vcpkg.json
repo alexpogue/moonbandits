@@ -4,9 +4,8 @@
   "dependencies": [
     {
       "name": "sdl3",
-      "features": [
-        "vulkan"
-      ]
+      "default-features": false,
+      "features": [ "x11", "wayland", "vulkan" ]
     },
     "sdl3-image",
     "sdl3-ttf"

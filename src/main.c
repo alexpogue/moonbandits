@@ -7,6 +7,11 @@
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char **argv) {
     app_t *app = NULL;
 
+    printf("SDL video driver: %s\n", SDL_GetCurrentVideoDriver());
+    printf("Available drivers:\n");
+    for (int i = 0; i < SDL_GetNumVideoDrivers(); i++) {
+        printf("  %s\n", SDL_GetVideoDriver(i));
+    }
     SDL_AppResult res = app_init(&app, argc, argv);
     if (res != SDL_APP_CONTINUE) {
         return res;

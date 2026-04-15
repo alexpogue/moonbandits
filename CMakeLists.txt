@@ -2,7 +2,9 @@ cmake_minimum_required(VERSION 3.10)
 
 project(moonbandits)
 
-add_executable(${PROJECT_NAME} src/main.c src/app.c)
+#set(CMAKE_EXECUTABLE_SUFFIX ".html")
+
+add_executable(${PROJECT_NAME} src/main.c src/app.c src/app.h)
 
 find_package(SDL3 CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE SDL3::SDL3)
