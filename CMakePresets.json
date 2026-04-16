@@ -2,10 +2,11 @@
   "version": 2,
   "configurePresets": [
     {
-      "name": "vcpkg",
+      "name": "native",
       "generator": "Ninja",
-      "binaryDir": "${sourceDir}/build",
+      "binaryDir": "${sourceDir}/build-native",
       "cacheVariables": {
+        "VCPKG_MANIFEST_DIR": "${sourceDir}/vcpkg-native",
         "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake"
       }
     },
@@ -14,6 +15,7 @@
       "generator": "Ninja",
       "binaryDir": "${sourceDir}/build-emscripten",
       "cacheVariables": {
+        "VCPKG_MANIFEST_DIR": "${sourceDir}/vcpkg-web",
         "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
         "VCPKG_TARGET_TRIPLET": "wasm32-emscripten",
         "CMAKE_SYSTEM_NAME": "Emscripten",

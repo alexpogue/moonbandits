@@ -2,7 +2,9 @@ cmake_minimum_required(VERSION 3.10)
 
 project(moonbandits)
 
-#set(CMAKE_EXECUTABLE_SUFFIX ".html")
+if (CMAKE_SYSTEM_NAME STREQUAL "Emscripten")
+    set(CMAKE_EXECUTABLE_SUFFIX ".html")
+endif()
 
 add_executable(${PROJECT_NAME} src/main.c src/app.c src/app.h)
 
